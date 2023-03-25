@@ -1,5 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:outset/minhaTela.dart';
+import 'package:outset/views/teste.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,6 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +16,38 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MinhaTela(),
+      home: FireBase(),
+    );
+  }
+}
+
+class FireBase extends StatefulWidget {
+  const FireBase({super.key});
+
+  @override
+  State<FireBase> createState() => _FireBaseState();
+}
+
+class _FireBaseState extends State<FireBase> {
+  Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: _initializeFirebase(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Teste();
+          }
+          return  Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
