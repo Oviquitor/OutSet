@@ -88,67 +88,67 @@ class InicialMain extends StatelessWidget {
                     },
                   ),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 150)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomTextButton(texto: 'Termos de Uso', size: 18),
-                    const Text(
-                      '|',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                //const Padding(padding: EdgeInsets.only(top: 100)),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     CustomTextButton(texto: 'Termos de Uso', size: 18),
+                //     const Text(
+                //       '|',
+                //       style: TextStyle(
+                //         fontSize: 15,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     CustomTextButton(texto: 'Privacidade', size: 18),
+                //   ],
+                // ),
+                //Botoes redondo
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black.withAlpha(90),
+                          thickness: 2,
+                        ),
                       ),
-                    ),
-                    CustomTextButton(texto: 'Privacidade', size: 18),
-                  ],
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text('Ou'),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black.withAlpha(90),
+                          thickness: 2,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                // //Botoes redondo
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 15),
-                //   child: Row(
-                //     children: [
-                //       Expanded(
-                //         child: Divider(
-                //           color: Colors.black.withAlpha(90),
-                //           thickness: 2,
-                //         ),
-                //       ),
-                //       const Padding(
-                //         padding: EdgeInsets.symmetric(horizontal: 15),
-                //         child: Text('Ou'),
-                //       ),
-                //       Expanded(
-                //         child: Divider(
-                //           color: Colors.black.withAlpha(90),
-                //           thickness: 2,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Container(
-                //   padding: EdgeInsets.only(top: 30),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       IconButton(
-                //         onPressed: () {},
-                //         icon: Image.asset("assets/images/Google.png"),
-                //       ),
-                //       Padding(padding: EdgeInsets.only(left: 50)),
-                //       IconButton(
-                //         onPressed: () {},
-                //         icon: Image.asset("assets/images/Facebook.png"),
-                //       ),
-                //       Padding(padding: EdgeInsets.only(left: 50)),
-                //       IconButton(
-                //         onPressed: () {},
-                //         icon: Image.asset("assets/images/Linkedin.png"),
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                Container(
+                  //padding: EdgeInsets.only(top: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset("assets/images/OutSet.png"),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 50)),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset("assets/images/OutSet.png"),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 50)),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset("assets/images/OutSet.png"),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
