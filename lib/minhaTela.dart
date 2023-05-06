@@ -12,10 +12,10 @@ class MinhaTela extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/img.jpg"),
-                    fit: BoxFit.cover,
-                  ),
+                  // image: DecorationImage(
+                    // image: AssetImage("assets/images/img.jpg"),
+                  //   fit: BoxFit.cover,
+                  // ),
                 ),
               ),
             ),

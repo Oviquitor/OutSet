@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:outset/components/custom_text.dart';
 import 'package:outset/components/custom_textButton.dart';
-
-import 'package:provider/provider.dart';
+import 'package:outset/views/InicioPage/LoginMain/LoginController.dart';
 
 class LoginMain extends StatefulWidget {
   const LoginMain({super.key});
@@ -149,7 +148,11 @@ class _LoginMainState extends State<LoginMain> {
                           fontSize: 18,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        logar(
+                          _emailController, _senhaController, context
+                        );
+                      },
                     ),
                   ),
 
