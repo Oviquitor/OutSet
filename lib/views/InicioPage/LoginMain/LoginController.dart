@@ -6,8 +6,8 @@ Future logar(emailcontroller, senhacontroller, context) async {
   try {
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailcontroller.text.trim(),
-      password: senhacontroller.text.trim(),
+          email: emailcontroller.text.trim(),
+          password: senhacontroller.text.trim(),
     );
     if (userCredential != null) {
       Navigator.pushReplacement(
@@ -16,16 +16,18 @@ Future logar(emailcontroller, senhacontroller, context) async {
       );
     }
   } on FirebaseAuthException catch (e) {
-    String msg = '';
-    if (e.code == 'user-not-found') {
-      msg = 'Usuário Não Encontrado';
-    } else if (e.code == 'wrong-password') {
-      msg = 'Senha Incorreta';
-    } else {
-      msg = 'Erro Não Definido';
-    }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(msg)),
-    );
+    // String msg = '';
+    // if (e.code == 'user-not-found') {
+    //   msg = 'Usuário Não Encontrado';
+    // } else if (e.code == 'wrong-password') {
+    //   msg = 'Senha Incorreta';
+    // } else {
+    //   msg = 'Erro Não Definido';
+    // }
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(content: Text(msg)),
+    // );
+
+    // Util.showSnackBar(e.message);
   }
 }

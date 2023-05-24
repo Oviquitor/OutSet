@@ -1,8 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:outset/views/InicioPage/InicialMain/InicialMain.dart';
 
-class MinhaTela extends StatelessWidget {
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+getDados() {
+  User? user = _auth.currentUser;
+  if (user != null) {
+    String? displayName = user.displayName;
+    return displayName;
+  }
+  return '';
+}
+
+class MinhaTela extends StatefulWidget {
   const MinhaTela({super.key});
 
+  @override
+  State<MinhaTela> createState() => _MinhaTelaState();
+}
+
+class _MinhaTelaState extends State<MinhaTela> {
+  String usuario = getDados();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,45 +30,24 @@ class MinhaTela extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                decoration: const BoxDecoration(
-                  // image: DecorationImage(
-                    // image: AssetImage("assets/images/img.jpg"),
-                  //   fit: BoxFit.cover,
-                  // ),
-                ),
+                alignment: Alignment.center,
+                child: Text(usuario,style: TextStyle(fontSize: 20),),
               ),
             ),
             Expanded(
               child: Container(
+                alignment: Alignment.centerLeft,
                 padding: EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(top: 40),
-                      child: SizedBox(
-                        child: Text(
-                          'Um lugar qualquera',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: SizedBox(
-                        child: Text(
-                          'Em uma ilha',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.black45),
-                        ),
-                      ),
-                    ),
-                  ],
+                child: ElevatedButton(
+                  onPressed: () async {
+                    FirebaseAuth auth = FirebaseAuth.instance;
+                    await auth.signOut();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => InicialMain()),
+                    );
+                  },
+                  child: Text("Logout"),
                 ),
               ),
             ),

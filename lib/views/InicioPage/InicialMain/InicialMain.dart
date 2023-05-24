@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:outset/components/custom_textButton.dart';
 import 'package:outset/views/InicioPage/CadastroMain/CadastroMain.dart';
-import 'package:outset/views/InicioPage/LoginMain/login.dart';
+import 'package:outset/views/InicioPage/LoginMain/Login.dart';
 
 class InicialMain extends StatelessWidget {
   const InicialMain({super.key});

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:outset/components/custom_text.dart';
-import 'package:outset/components/custom_textButton.dart';
+import 'package:outset/views/InicioPage/CadastroMain/CadastroMain.dart';
 import 'package:outset/views/InicioPage/LoginMain/LoginController.dart';
+import 'package:outset/views/InicioPage/RedefinirMain/RedefinirMain.dart';
+import '../.Components/Utils.dart';
 
 class LoginMain extends StatefulWidget {
   const LoginMain({super.key});
@@ -17,6 +19,7 @@ class _LoginMainState extends State<LoginMain> {
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
   bool? _isChecked = false;
+  Utils util = Utils();
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +130,15 @@ class _LoginMainState extends State<LoginMain> {
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
                       ),
-                      CustomTextButton(texto: 'Esqueceu a senha?', size: 15),
+                      TextButton(
+                        child: Text(
+                          'Esqueceu a senha?',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        onPressed: () {
+                          util.mudarTela(RedefinirMain(), context);
+                        },
+                      ),
                     ],
                   ),
 
@@ -149,9 +160,7 @@ class _LoginMainState extends State<LoginMain> {
                         ),
                       ),
                       onPressed: () {
-                        logar(
-                          _emailController, _senhaController, context
-                        );
+                        logar(_emailController, _senhaController, context);
                       },
                     ),
                   ),
@@ -170,7 +179,13 @@ class _LoginMainState extends State<LoginMain> {
                           ),
                         ),
                       ),
-                      CustomTextButton(texto: 'Cadastrar', size: 15),
+                      TextButton(
+                        child:
+                            Text('Cadastrar', style: TextStyle(fontSize: 15)),
+                        onPressed: () {
+                          util.mudarTela(CadastroMain(), context);
+                        },
+                      ),
                     ],
                   ),
                 ],
