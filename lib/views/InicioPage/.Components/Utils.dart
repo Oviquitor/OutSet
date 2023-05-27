@@ -1,3 +1,6 @@
+import 'package:outset/views/InicioPage/InicialMain/InicialMain.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Utils {
@@ -14,6 +17,14 @@ class Utils {
       context,
       MaterialPageRoute(builder: (context) => tela),
     );
+  }
+
+  void desconectar(context) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.signOut();
+    await pref.clear();
+    mudarTela(InicialMain(), context);
   }
 //   final messengerKey = GlobalKey<ScaffoldMessengerState>();
 

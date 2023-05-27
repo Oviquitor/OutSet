@@ -1,18 +1,23 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:outset/minhaTela.dart';
 
-Future logar(emailcontroller, senhacontroller, context) async {
+Future logar(emailcontroller, senhacontroller, check, context) async {
   try {
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailcontroller.text.trim(),
-          password: senhacontroller.text.trim(),
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailcontroller,
+      password: senhacontroller,
     );
     if (userCredential != null) {
+      if (check == true) {
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        await pref.setString("email", emailcontroller);
+        await pref.setString("senha", senhacontroller);
+      }
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MinhaTela()),
+        MaterialPageRoute(builder: (context) => const MinhaTela()),
       );
     }
   } on FirebaseAuthException catch (e) {

@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:outset/views/InicioPage/.Components/Utils.dart';
 import 'package:outset/views/InicioPage/InicialMain/InicialMain.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:outset/views/InicioPage/InicialMain/InicialMain.dart';
+import 'package:outset/views/InicioPage/.Components/Utils.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -22,6 +22,7 @@ class MinhaTela extends StatefulWidget {
 
 class _MinhaTelaState extends State<MinhaTela> {
   String usuario = getDados();
+  Utils util = new Utils();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,10 @@ class _MinhaTelaState extends State<MinhaTela> {
             Expanded(
               child: Container(
                 alignment: Alignment.center,
-                child: Text(usuario,style: TextStyle(fontSize: 20),),
+                child: Text(
+                  usuario,
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             Expanded(
@@ -40,12 +44,7 @@ class _MinhaTelaState extends State<MinhaTela> {
                 padding: EdgeInsets.symmetric(horizontal: 32),
                 child: ElevatedButton(
                   onPressed: () async {
-                    FirebaseAuth auth = FirebaseAuth.instance;
-                    await auth.signOut();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => InicialMain()),
-                    );
+                    util.desconectar(context);
                   },
                   child: Text("Logout"),
                 ),

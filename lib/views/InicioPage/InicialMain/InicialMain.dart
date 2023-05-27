@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:outset/components/custom_textButton.dart';
 import 'package:outset/views/InicioPage/CadastroMain/CadastroMain.dart';
 import 'package:outset/views/InicioPage/LoginMain/Login.dart';
+import 'package:outset/views/InicioPage/LoginMain/LoginController.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class InicialMain extends StatelessWidget {
+class InicialMain extends StatefulWidget {
   const InicialMain({super.key});
+
+  @override
+  State<InicialMain> createState() => _InicialMainState();
+}
+
+class _InicialMainState extends State<InicialMain> {
+  @override
+  void initState() {
+    super.initState();
+    checkdados();
+  }
+
+  checkdados() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var email = pref.get('email');
+    var senha = pref.get('senha');
+    if (email != null && senha != null) {
+      logar(email, senha, false, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

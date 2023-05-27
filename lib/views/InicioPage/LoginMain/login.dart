@@ -89,7 +89,7 @@ class _LoginMainState extends State<LoginMain> {
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                       labelText: 'Email',
                       isDense: true,
                       border: OutlineInputBorder(
@@ -110,11 +110,14 @@ class _LoginMainState extends State<LoginMain> {
                         child: Checkbox(
                           value: _isChecked,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2)),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
                           onChanged: (value) {
-                            setState(() {
-                              _isChecked = value;
-                            });
+                            setState(
+                              () {
+                                _isChecked = value;
+                              },
+                            );
                           },
                         ),
                       ),
@@ -131,12 +134,12 @@ class _LoginMainState extends State<LoginMain> {
                         padding: EdgeInsets.symmetric(horizontal: 8),
                       ),
                       TextButton(
-                        child: Text(
+                        child: const Text(
                           'Esqueceu a senha?',
                           style: TextStyle(fontSize: 15),
                         ),
                         onPressed: () {
-                          util.mudarTela(RedefinirMain(), context);
+                          util.mudarTela(const RedefinirMain(), context);
                         },
                       ),
                     ],
@@ -160,12 +163,13 @@ class _LoginMainState extends State<LoginMain> {
                         ),
                       ),
                       onPressed: () {
-                        logar(_emailController, _senhaController, context);
+                        logar(_emailController.text.trim(),
+                            _senhaController.text.trim(), _isChecked, context);
                       },
                     ),
                   ),
 
-                  Padding(padding: const EdgeInsets.only(top: 25)),
+                  const Padding(padding: EdgeInsets.only(top: 25)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -180,8 +184,8 @@ class _LoginMainState extends State<LoginMain> {
                         ),
                       ),
                       TextButton(
-                        child:
-                            Text('Cadastrar', style: TextStyle(fontSize: 15)),
+                        child: const Text('Cadastrar',
+                            style: TextStyle(fontSize: 15)),
                         onPressed: () {
                           util.mudarTela(CadastroMain(), context);
                         },
